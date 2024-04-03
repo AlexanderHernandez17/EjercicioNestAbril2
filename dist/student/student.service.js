@@ -26,7 +26,8 @@ let StudentService = class StudentService {
     }
     async create(body) {
         const studentData = {
-            name: body.name,
+            userName: body.userName,
+            email: body.email,
             password: body.password
         };
         const student = new this.studentModel(studentData);
@@ -39,6 +40,12 @@ let StudentService = class StudentService {
         }
         return student;
     }
+    async delete(params) {
+        return await this.studentModel.findOneAndDelete({ _id: params.id });
+    }
+    async update(params) {
+        return await this.studentModel.findOneAndUpdate({ _id: params.id }, { $set: { userName: params.userName } });
+    }
 };
 exports.StudentService = StudentService;
 __decorate([
@@ -47,6 +54,18 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], StudentService.prototype, "create", null);
+__decorate([
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], StudentService.prototype, "delete", null);
+__decorate([
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], StudentService.prototype, "update", null);
 exports.StudentService = StudentService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, mongoose_2.InjectModel)(student_entity_1.Student.name)),

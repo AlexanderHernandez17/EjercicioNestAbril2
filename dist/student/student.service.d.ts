@@ -34,4 +34,6 @@ export declare class StudentService {
     findOne(id: string): Promise<import("mongoose").Document<unknown, {}, Student> & Student & {
         _id: import("mongoose").Types.ObjectId;
     }>;
+    delete(params: any): Promise<Student>;
+    update(params: any): Promise<Student>;
 }

@@ -22,6 +22,10 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
+], Student.prototype, "email", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
 ], Student.prototype, "password", void 0);
 exports.Student = Student = __decorate([
     (0, mongoose_1.Schema)({ collection: 'users', })

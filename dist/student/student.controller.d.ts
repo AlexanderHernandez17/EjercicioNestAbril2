@@ -31,4 +31,6 @@ export declare class StudentController {
         _id: import("mongoose").Types.ObjectId;
     })[]>;
     createStudents(body: any): Promise<import("./student.entity").Student>;
+    updateStudent(params: any): Promise<import("./student.entity").Student>;
+    deleteStudent(params: any): Promise<import("./student.entity").Student>;
 }

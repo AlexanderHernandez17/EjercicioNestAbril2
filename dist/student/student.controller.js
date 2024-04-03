@@ -25,6 +25,12 @@ let StudentController = class StudentController {
     createStudents(body) {
         return this.studentService.create(body);
     }
+    updateStudent(params) {
+        return this.studentService.update(params);
+    }
+    deleteStudent(params) {
+        return this.studentService.delete(params);
+    }
 };
 exports.StudentController = StudentController;
 __decorate([
@@ -34,12 +40,26 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], StudentController.prototype, "obtainStudents", null);
 __decorate([
-    (0, common_1.Post)(),
+    (0, common_1.Post)('create'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], StudentController.prototype, "createStudents", null);
+__decorate([
+    (0, common_1.Patch)('update/:id/userName/:userName'),
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], StudentController.prototype, "updateStudent", null);
+__decorate([
+    (0, common_1.Delete)('delete/id/:id'),
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], StudentController.prototype, "deleteStudent", null);
 exports.StudentController = StudentController = __decorate([
     (0, common_1.Controller)('student'),
     __metadata("design:paramtypes", [student_service_1.StudentService])

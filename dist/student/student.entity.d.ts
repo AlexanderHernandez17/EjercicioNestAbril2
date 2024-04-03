@@ -25,6 +25,7 @@
 import { Document } from "mongoose";
 export declare class Student extends Document {
     userName: string;
+    email: string;
     password: string;
 }
 export declare const StudentSchema: import("mongoose").Schema<Student, import("mongoose").Model<Student, any, any, any, Document<unknown, any, Student> & Student & {

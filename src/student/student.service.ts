@@ -1,4 +1,4 @@
-import { Body, Injectable, NotFoundException } from '@nestjs/common';
+import { Body, Injectable, NotFoundException, Param } from '@nestjs/common';
 import { Student } from './student.entity';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
@@ -18,7 +18,8 @@ export class StudentService {
     async create(@Body() body): Promise<Student> {
 
         const studentData = {
-            name: body.name,
+            userName: body.userName,
+            email: body.email,
             password: body.password
         }
         const student = new this.studentModel(studentData)
@@ -34,7 +35,14 @@ export class StudentService {
         }
         return student;
     }
-}
 
+    async delete(@Param() params): Promise<Student> {
+        return await this.studentModel.findOneAndDelete({_id: params.id})
+    }
+
+    async update(@Param() params): Promise<Student> {
+        return await this.studentModel.findOneAndUpdate({_id: params.id}, {$set:{userName: params.userName}})
+    }
+}
 
 
